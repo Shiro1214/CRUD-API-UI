@@ -17,15 +17,35 @@ function PersonList() {
   return (
     <div>
       <h2>Person List</h2>
-     
-        {persons.map((person) => (
-        
-        <ul key={person.id}>
-            {person.firstMidName} {person.lastName}   
-          <li>Country: {person.country}</li>
-        </ul>
-        ))}
-      
+      <table className="table"> 
+            <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Person Type</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Street</th>
+                  <th scope="col">Province</th>
+              </tr>
+            </thead>
+            <tbody>
+              {persons.map((person) => (
+                <tr key={person.id}>
+                  <td>{person.id}</td>
+                  <td>{person.firstMidName}</td>
+                  <td>{person.lastName}</td>
+                  <td>{person.personType}</td>
+                  <td>{person.country}</td>
+                  <td>{person.city}</td>
+                  <td>{person.street}</td>
+                  <td>{person.province}</td>
+                </tr>
+              ))}
+            </tbody>
+        </table>
+
     </div>
   );
 }
