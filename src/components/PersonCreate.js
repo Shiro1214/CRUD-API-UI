@@ -5,7 +5,7 @@ function PersonCreate() {
     const [firstMidName, setFirstMidName] = useState('');
     const [lastName, setLastName] = useState('');
     const [country, setCountry] = useState('');
-    const [personType, setPersonType] = useState(0);
+    const [personType, setPersonType] = useState('');
     const [city, setCity] = useState('');
     const [street, setStreet] = useState('');
     const [province, setProvince] = useState('');
@@ -36,15 +36,15 @@ function PersonCreate() {
             <form onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label className='form-label'>First Name</label>
-                    <input type="text"  className="form-control" value={firstMidName} onChange={(e) => setFirstMidName(e.target.value)} />
+                    <input type="text" placeholder='First Name' className="form-control" value={firstMidName} onChange={(e) => setFirstMidName(e.target.value)} />
                 </div>
                 <div className='mb-3'>
                     <label className='form-label'>Last Name</label>
-                    <input type="text" className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                    <input type="text" placeholder='Last Name' className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 </div>
                 <div className='mb-3'>
                     <label className='form-label'>Country</label>
-                    <input type="text" className="form-control" value={country} onChange={(e) => setCountry(e.target.value)} />
+                    <input type="text" placeholder='Country' className="form-control" value={country} onChange={(e) => setCountry(e.target.value)} />
                 </div>
                 <div className='mb-3'>
                     <label className='form-label'>Person Type</label>
@@ -62,9 +62,13 @@ function PersonCreate() {
                     <label className='form-label'>Province</label>
                     <input type="text" className="form-control" value={province} onChange={(e) => setProvince(e.target.value)} />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className='col-auto'>
+                    <button type="submit" className="btn btn-primary">Submit</button> 
+                    <button type = "button" className="btn btn-primary" onClick={() => window.location.href = '/list'}>Back</button>
+                </div>
             </form>
 
+            
         </div>
     );
 }

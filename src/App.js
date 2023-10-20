@@ -6,6 +6,7 @@ import PersonList from './components/PersonList';
 import SearchComponent from './components/SearchComponent';
 import PersonCreate from './components/PersonCreate';
 import HomePage  from './components/Home';  
+import Person from './components/Person';
 //the app will run and get a list of person
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
                 <li class="nav-item">
                   <Link to="/search" className="nav-link">Search Person</Link>
                 </li>
-                <li class="nav-item">
+                {/*<li class="nav-item">
                 <Link to="/create" className="nav-link">Create Person</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -37,6 +38,7 @@ function App() {
           <Route path="/list" element = {<PersonList />} />
           <Route path="/search" element = {<SearchComponent />} />
           <Route path="/create" element = {<PersonCreate />} />
+          <Route path="/person" element = {<Person />} />
         </Routes>
       </div>
   );

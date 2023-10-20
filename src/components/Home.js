@@ -6,7 +6,7 @@ function HomePage() {
       <div className="home-content">
         <h1>Welcome to API DevPlat</h1>
         <p>Explore and enjoy the magic of our application!</p>
-        <button className="get-started-button">Get Started</button>
+        <button className="btn btn-primary">Get Started</button>
       </div>
     </div>
   );
