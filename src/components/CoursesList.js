@@ -36,7 +36,7 @@ function CoursesList(){
                 </tbody>
 
             </table>
-            <button className='btn btn-primary'>Add Course</button>
+            <button className='btn btn-primary' onClick={() => window.location.href = '/courseCreate'}>Add Course</button>
         </div>
 
     );
