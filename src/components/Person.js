@@ -36,9 +36,16 @@ function Person() {
       {loading ? (
         <p>Loading...</p>
       ) : person ? (
-        <h1>
-          {person.firstMidName} {person.lastName}
-        </h1>
+
+        <div className="card mb-3">
+            <img src="..." className="card-img-top" alt={person.firstMidName + "'s photo" }/>
+            <div className="card-body">
+                <h5 className="card-title">{person.firstMidName} {person.lastName}</h5>
+                <p className="card-text">{person.firstMidName} is a {person.personType} from {person.country}, currently living in {person.city}, {person.street}, {person.province}</p>
+                <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+
       ) : (
         <p>Person not found</p>
       )}
