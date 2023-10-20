@@ -18,7 +18,6 @@ function Person() {
 
         // Assuming your API returns the specific object based on the search value
         const result = response.data;
-        console.log('Response:', result); // Add this line
         setPerson(result);
         setLoading(false);
       } catch (error) {
