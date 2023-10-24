@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { Link } from 'react-router-dom';
+
 import {useState, useEffect,React} from 'react'
 
 function CoursesList(){
@@ -19,7 +21,7 @@ function CoursesList(){
                 <thead>
                     <tr>
                         <th scope='col'>#</th>
-                        <th scope='col'>Title</th>
+                        <th scope='col' >Title</th>
                         <th scope='col'>Section</th>
                         <th scope='col'>Teacher</th>
                     </tr>
@@ -28,7 +30,7 @@ function CoursesList(){
                     {courses.map((course) => (
                         <tr key={course.id}>
                             <td>{course.id}</td>
-                            <td>{course.title}</td>
+                            <td><Link to={`/course?id=${course.id}`}>{course.title}</Link></td>
                             <td>{course.section}</td>
                             <td>TBD</td>
                         </tr>

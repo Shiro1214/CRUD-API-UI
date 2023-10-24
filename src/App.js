@@ -9,6 +9,7 @@ import HomePage  from './components/Home';
 import Person from './components/Person';
 import CoursesList from './components/CoursesList';
 import CourseCreate from './components/CourseCreate';
+import Course from './components/Course';
 //the app will run and get a list of person
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/search" element = {<SearchComponent />} />
           <Route path="/create" element = {<PersonCreate />} />
           <Route path="/person" element = {<Person />} />
+          <Route path="/course" element = {<Course />} />
           <Route path="/courses" element = {<CoursesList />} />
           <Route path="/courseCreate" element = {<CourseCreate />} />
         </Routes>
