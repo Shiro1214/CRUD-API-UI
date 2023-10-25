@@ -32,7 +32,12 @@ function CoursesList(){
                             <td>{course.id}</td>
                             <td><Link to={`/course?id=${course.id}`}>{course.title}</Link></td>
                             <td>{course.section}</td>
-                            <td>{course.coursePersons ? <Link to ={`/person?id=${course.coursePersons[0].person.id}`}>{course.coursePersons[0].person.firstMidName + " " + course.coursePersons[0].person.lastName}</Link> : "TBD"}</td>
+                            <td>{course.coursePersons ? 
+                                <Link to ={`/person?id=${course.coursePersons[0].person.id}`}>
+                                    {course.coursePersons[0].person.firstMidName + " " + course.coursePersons[0].person.lastName}
+                                </Link>
+                                : "TBD"}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
