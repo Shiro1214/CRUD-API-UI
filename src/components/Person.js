@@ -87,7 +87,7 @@ function Person() {
                         <td>{pc.course.id}</td>
                         <td><Link to={`/course?id=${pc.course.id}`}>{pc.course.title}</Link></td>
                         <td>{pc.course.section}</td>
-                        <td>{ pc.teacher ? (pc.teacher.firstMidName + " " + pc.teacher.lastName): "TBD"}</td>
+                        <td>{ pc.person ? (pc.person.firstMidName + " " + pc.person.lastName): "TBD"}</td>
                         <td>{pc.gradeLetter}</td>
                       </tr>
                     ))}

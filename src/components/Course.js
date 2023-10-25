@@ -36,14 +36,16 @@ function Course(){
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Person Type</th>
+                                    <th scope="col">Grade</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {course.people.map((person) => (
-                                    <tr key={person.id}>
-                                        <td>{person.id}</td>
-                                        <td>{person.firstMidName} {person.lastName}</td>
-                                        <td>{person.personType}</td>
+                                {course.coursePersons.map((cp) => (
+                                    <tr key={cp.person.id}>
+                                        <td>{cp.person.id}</td>
+                                        <td>{cp.person.firstMidName} {cp.person.lastName}</td>
+                                        <td>{cp.person.personType}</td>
+                                        <td>{cp.gradeLetter}</td>
                                     </tr>
                                 ))}
                             </tbody>
