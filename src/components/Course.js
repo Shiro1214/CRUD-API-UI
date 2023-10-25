@@ -16,6 +16,15 @@ function Course(){
             console.error('Error fetching data:', error);
         }
     }
+    const deleteCourse = async () => {
+        try {
+            axios.delete(`http://localhost:5263/api/Course/DeleteCourse?id=${id}`).then(() => {
+                window.location.href = '/courses';
+            })
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
     useEffect(() => {
         axios.get(`http://localhost:5263/api/Course/GetCourse?id=${id}`).then((response) => {
             setCourse(response.data);
@@ -35,6 +44,9 @@ function Course(){
                     <><div>
                         <h2>{course.title}</h2>
                         <p>{course.description}</p>
+                    </div>
+                    <div class="col-auto">
+                      <button type = "button" onClick={ deleteCourse } class="btn btn-danger mb-3">Delete Course</button>
                     </div>
                     <h1>People in this course</h1>
                     <table className="table">
