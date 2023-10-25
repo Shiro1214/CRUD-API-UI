@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link,useLocation } from 'react-router-dom';
+import { Link,useLocation, useNavigate  } from 'react-router-dom';
 
 function Person() {
   const [person, setPerson] = useState(null);
@@ -19,6 +19,15 @@ function Person() {
       console.error('Error fetching data:', error);
     }
   };
+  const deletePerson = async () => {
+    try {
+      axios.delete(`http://localhost:5263/api/Person/Delete?id=${person.id}`).then(() => {
+        window.location.href = '/list';
+      })
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,8 +74,13 @@ function Person() {
               <h5 className="card-title">{person.firstMidName} {person.lastName}</h5>
               <p className="card-text">{person.firstMidName} is a {person.personType} from {person.country}, currently living in {person.city}, {person.street}, {person.province}</p>
               <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
-        </div>
-          </div><h2>View {person.firstMidName}'s courses</h2>
+            </div>
+
+          </div>
+          <div class="col-auto">
+                      <button type = "button" onClick={ deletePerson } class="btn btn-danger mb-3">Delete {person.firstMidName}</button>
+                    </div>
+          <h2>View {person.firstMidName}'s courses</h2>
 
           {courseLoading ? (
             <p>Loading courses...</p>
@@ -108,6 +122,7 @@ function Person() {
                     <div class="col-auto">
                       <button type = "button" onClick={ addCourse} class="btn btn-primary mb-3">Add</button>
                     </div>
+
                   </div>
                 </div>
                 </>
