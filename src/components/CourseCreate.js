@@ -30,7 +30,7 @@ function CourseCreate(){
                 <label className='form-label'>Section</label>
                 <input type="text" placeholder='Section' className="form-control" value={section} onChange={(e) => setSection(e.target.value)} />
             </div>
-            <div className='col-auto'>
+            <div className='mb-3'>
                 <button type="submit" className="btn btn-primary">Create Course</button>
             </div>
 

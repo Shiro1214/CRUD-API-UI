@@ -5,12 +5,20 @@ import { Link,useLocation } from 'react-router-dom';
 function Person() {
   const [person, setPerson] = useState(null);
   const [pCourses, setPCourses] = useState([]);
+  const [courseId, setCourseId] = useState('');
   const [loading, setLoading] = useState(true);
   const [courseLoading, setCourseLoading] = useState(true);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
 
+  const addCourse = async () => {
+    try {
+      axios.put(`http://localhost:5263/api/CoursePerson/AddCoursePerson?stuId=${person.id}&courseId=${courseId}`);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,31 +67,50 @@ function Person() {
               <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
         </div>
           </div><h2>View {person.firstMidName}'s courses</h2>
+
           {courseLoading ? (
             <p>Loading courses...</p>
           ) : pCourses ? (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Section</th>
-                  <th scope="col">Teacher</th>
-                  <th scope="col">Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pCourses.map((pc) => (
-                  <tr key={pc.course.id}>
-                    <td>{pc.course.id}</td>
-                    <td><Link to={`/course?id=${pc.course.id}`}>{pc.course.title}</Link></td>
-                    <td>{pc.course.section}</td>
-                    <td>{pc.teacher.firstMidName + " " + pc.teacher.lastName}</td>
-                    <td>{pc.gradeLetter}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <><table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Section</th>
+                      <th scope="col">Teacher</th>
+                      <th scope="col">Grade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pCourses.map((pc) => (
+                      <tr key={pc.course.id}>
+                        <td>{pc.course.id}</td>
+                        <td><Link to={`/course?id=${pc.course.id}`}>{pc.course.title}</Link></td>
+                        <td>{pc.course.section}</td>
+                        <td>{ pc.teacher ? (pc.teacher.firstMidName + " " + pc.teacher.lastName): "TBD"}</td>
+                        <td>{pc.gradeLetter}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <h5>Add course</h5>
+                <div>
+                  <div class="row g-2">
+                    <div class="col-auto">
+                      <input
+                      className='form-control'
+                      type="text"
+                      placeholder="Course ID..."
+                      value={courseId}
+                      onChange={(e) => setCourseId(e.target.value)}
+                    />
+                    </div>
+                    <div class="col-auto">
+                      <button type = "button" onClick={ addCourse} class="btn btn-primary mb-3">Add</button>
+                    </div>
+                  </div>
+                </div>
+                </>
 
           ) : (
             <p>Courses not found</p>
