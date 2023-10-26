@@ -12,8 +12,11 @@ function PersonCreate() {
     const [province, setProvince] = useState('');
     const [status, setStatus] = useState('');
     const navigate = useNavigate();
-    const handleSubmit = async (event) => {
-        axios.post('http://localhost:5263/api/Person/CreatePerson', {
+const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+        const response = await axios.post('http://localhost:5263/api/Person/CreatePerson', {
             firstMidName: firstMidName,
             lastName: lastName,
             country: country,
@@ -21,16 +24,20 @@ function PersonCreate() {
             city: city,
             street: street,
             province: province
-        }).then((response) => {
-            console.log(response);
-            setStatus = "success";
-        })
-        .catch((error) => {
-            console.log(error);
-            setStatus = "error";
-        })
+        });
 
+        if (response.status === 200) {
+            navigate('/person?id=' + response.data.id); // Redirect to the new created person page
+            setStatus('success');
+        } else {
+            navigate('/students'); // Redirect to the student list
+            setStatus('error');
+        }
+    } catch (error) {
+        console.log(error);
+        setStatus('error');
     }
+}
     return (
         //if there's an error or success message, display it then the form
         <div>
@@ -66,7 +73,7 @@ function PersonCreate() {
                 </div>
                 <div className='col-auto'>
                     <button type="submit" className="btn btn-primary">Submit</button> 
-                    <button type = "button" className="btn btn-primary" onClick={() => window.location.href = '/list'}>Back</button>
+                    <button type = "button" className="btn btn-primary" onClick={() => navigate('/students')}>Back</button>
                 </div>
             </form>
 
