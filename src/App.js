@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import './App.css';
-import PersonList from './components/PersonList';
+import StudentList from './components/StudentList';
 import SearchComponent from './components/SearchComponent';
 import PersonCreate from './components/PersonCreate';
 import HomePage  from './components/Home';  
@@ -10,6 +10,7 @@ import Person from './components/Person';
 import CoursesList from './components/CoursesList';
 import CourseCreate from './components/CourseCreate';
 import Course from './components/Course';
+import TeacherList from './components/TeacherList';
 //the app will run and get a list of person
 function App() {
   return (
@@ -23,7 +24,10 @@ function App() {
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                  <Link to="/list" className="nav-link">List of Persons</Link>
+                  <Link to="/students" className="nav-link">List of Students</Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/teachers" className="nav-link">List of Teachers</Link>
                 </li>
                 <li class="nav-item">
                   <Link to="/search" className="nav-link">Search Person</Link>
@@ -41,13 +45,14 @@ function App() {
 
         <Routes>
           <Route path="/" element = {<HomePage />} />
-          <Route path="/list" element = {<PersonList />} />
+          <Route path="/students" element = {<StudentList />} />
           <Route path="/search" element = {<SearchComponent />} />
           <Route path="/create" element = {<PersonCreate />} />
           <Route path="/person" element = {<Person />} />
           <Route path="/course" element = {<Course />} />
           <Route path="/courses" element = {<CoursesList />} />
           <Route path="/courseCreate" element = {<CourseCreate />} />
+          <Route path="/teachers" element = {<TeacherList />} />
         </Routes>
       </div>
   );

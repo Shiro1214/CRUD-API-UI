@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 function PersonCreate() {
     const [firstMidName, setFirstMidName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -10,6 +11,7 @@ function PersonCreate() {
     const [street, setStreet] = useState('');
     const [province, setProvince] = useState('');
     const [status, setStatus] = useState('');
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         axios.post('http://localhost:5263/api/Person/CreatePerson', {
             firstMidName: firstMidName,

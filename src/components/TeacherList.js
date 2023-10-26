@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function PersonList() {
+function TeacherList() {
   const [persons, setPersons] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5263/api/Person/GetAllStudents') // Replace with your API endpoint
+    axios.get('http://localhost:5263/api/Person/GetAllTeachers') // Replace with your API endpoint
       .then((response) => {
         setPersons(response.data);
       })
@@ -51,4 +51,4 @@ function PersonList() {
   );
 }
 
-export default PersonList;
+export default TeacherList;
