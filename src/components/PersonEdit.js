@@ -105,7 +105,7 @@ function PersonEdit() {
                     </div>
                     <div className='col-auto'>
                         <button type="submit" className="btn btn-primary">Update</button> 
-                        <button type = "button" className="btn btn-primary" onClick={() => navigate(`/person?id=${person.id}`)}>Back</button>
+                        <button type = "button" className="btn btn-primary mx-2" onClick={() => navigate(`/person?id=${person.id}`)}>Back</button>
                     </div>
                 </form>
             ) : (

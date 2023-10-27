@@ -12,6 +12,7 @@ import CourseCreate from './components/CourseCreate';
 import Course from './components/Course';
 import TeacherList from './components/TeacherList';
 import PersonEdit from './components/PersonEdit';
+import CourseEdit from './components/CourseEdit';
 //the app will run and get a list of person
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="/courseCreate" element = {<CourseCreate />} />
           <Route path="/teachers" element = {<TeacherList />} />
           <Route path="/personEdit" element = {<PersonEdit />} />
+          <Route path="/courseEdit" element = {<CourseEdit />} />
         </Routes>
       </div>
   );

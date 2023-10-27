@@ -25,6 +25,13 @@ function Person() {
       console.error('Error fetching data:', error);
     }
   };
+  const removeCourse = async (cid) => {
+    try {
+        axios.delete(`http://localhost:5263/api/CoursePerson/DeletePersonCourse?pid=${person.id}&cid=${cid}`);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
   const deletePerson = async () => {
     try {
       axios.delete(`http://localhost:5263/api/Person/Delete?id=${person.id}`).then(() => {
@@ -103,6 +110,7 @@ function Person() {
                       <th scope="col">Section</th>
                       <th scope="col">Teacher</th>
                       <th scope="col">Grade</th>
+                      <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -113,6 +121,7 @@ function Person() {
                         <td>{pc.course.section}</td>
                         <td>{ pc.person ? (pc.person.firstMidName + " " + pc.person.lastName): "TBD"}</td>
                         <td>{pc.gradeLetter}</td>
+                        <td><button className='btn btn-danger' onClick={() => removeCourse(pc.course.id)}>Remove Course</button></td>
                       </tr>
                     ))}
                   </tbody>
