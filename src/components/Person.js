@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link,useLocation, useNavigate  } from 'react-router-dom';
+import PersonEdit from './PersonEdit';
 
 function Person() {
   const [person, setPerson] = useState(null);
@@ -11,10 +12,15 @@ function Person() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
-
+  const navigate = useNavigate();
   const addCourse = async () => {
     try {
-      axios.put(`http://localhost:5263/api/CoursePerson/AddCoursePerson?stuId=${person.id}&courseId=${courseId}`);
+      const response = await axios.put(`http://localhost:5263/api/CoursePerson/AddCoursePerson?stuId=${person.id}&courseId=${courseId}`);
+      if (response.status === 200){
+        window.location.href = '/person?id=' + person.id; //this will actually reload the page.
+      }else {
+        window.location.href = '/person?id=' + person.id;
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -77,9 +83,13 @@ function Person() {
             </div>
 
           </div>
+
           <div class="col-auto">
-                      <button type = "button" onClick={ deletePerson } class="btn btn-danger mb-3">Delete {person.firstMidName}</button>
-                    </div>
+            <button type = "button" onClick={ ()=> navigate("/personEdit?id=" + person.id) } class="btn btn-info mb-3 mx-2">Edit </button>
+            <button type = "button" onClick={ deletePerson } class="btn btn-danger mb-3 mx-2">Delete {person.firstMidName}</button>
+          </div>
+ 
+
           <h2>View {person.firstMidName}'s courses</h2>
 
           {courseLoading ? (
