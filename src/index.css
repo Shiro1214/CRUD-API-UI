@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Show it's not fixed to the top */
+  min-height: 75rem;
 }
 
 code {
